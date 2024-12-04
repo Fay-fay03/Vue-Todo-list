@@ -12,27 +12,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from './App.vue'
 
 import { routes } from './utils/Routes.js'
-import { isTokenExpired } from './utils/helpers'
+
 
 const router = createRouter({
   history: createWebHistory('/'),
   routes
-})
-
-router.beforeEach((to, from, next) => {
-  const tokenExpired = isTokenExpired()
- 
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (!tokenExpired) {
-      next()
-    } else {
-      next({ name: 'index' })
-    }
-  } else if (to.matched.some((record) => record.meta.public)) {
-    next()
-  } else {
-    next({ name: 'index' })
-  }
 })
 
 const app = createApp(App)

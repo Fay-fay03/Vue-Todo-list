@@ -3,7 +3,7 @@
 
 
 export default {
-  name: "SalesLink",
+  name: "todo",
   components: {
 
   }
